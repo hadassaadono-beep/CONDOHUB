@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CONDOHUB - Reservas</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .botoes {
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 15px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 8px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #217dbb;
+        }
+
+        #informacoes {
+            background-color: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 10px;
+            text-align: left;
+            box-shadow: 0 2px 8px #aaa;
+        }
+
+        #informacoes h2 {
+            color: #333;
+        }
+
+        #informacoes h3 {
+            color: #3498db;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .inicio {
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>CONDOHUB</h1>
+
+        <p>
+            Sistema de reservas das áreas do condomínio
+        </p>
+
+    </header>
+
+
+    <div class="container">
+
+        <div class="inicio">
+
+            <h2>Escolha um espaço</h2>
+
+            <p>
+                Clique em um dos botões para ver as informações.
+            </p>
+
+        </div>
+
+
+        <div class="botoes">
+
+            <button onclick="mostrarSalao()">
+                🎉 Salão de Festas
+            </button>
+
+            <button onclick="mostrarGourmet()">
+                🍖 Área Gourmet
+            </button>
+
+            <button onclick="mostrarQuadra()">
+                ⚽ Quadra Esportiva
+            </button>
+
+            <button onclick="mostrarPiscina()">
+                🏊 Espaço Piscina
+            </button>
+
+        </div>
+
+
+        <div id="informacoes">
+
+            <h2>Informações</h2>
+
+            <p>
+                Selecione um espaço acima.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // SALÃO DE FESTAS
+
+        function mostrarSalao() {
+
+            document.getElementById("informacoes").innerHTML = `
+
+                <h2>🎉 Salão de Festas</h2>
+
+                <p>
+                    <strong>Aluguel:</strong>
+                    Todos os dias - diária
+                </p>
+
+                <h3>O que está incluso:</h3>
+
+                <ul>
+
+                    <li>30 mesas</li>
+
+                    <li>150 cadeiras</li>
+
+                    <li>Cozinha de apoio</li>
+
+                    <li>150 talheres</li>
+
+                    <li>150 pratos</li>
+
+                    <li>150 copos</li>
+
+                    <li>150 taças</li>
+
+                    <li>Geladeira</li>
+
+                    <li>Dois banheiros</li>
+
+                    <li>Sistema de som</li>
+
+                    <li>Área coberta</li>
+
+                </ul>
+
+                <p>
+                    <strong>Capacidade:</strong>
+                    150 pessoas
+                </p>
+
+                <h3>Regras:</h3>
+
+                <ul>
+
+                    <li>Respeitar o horário reservado.</li>
+
+                    <li>Manter o ambiente limpo e organizado.</li>
+
+                    <li>Não ultrapassar o limite de convidados.</li>
+
+                    <li>Evitar som em volume excessivo.</li>
+
+                    <li>Não danificar mesas, cadeiras ou equipamentos.</li>
+
+                    <li>Deixar o espaço organizado após a festa.</li>
+
+                </ul>
+
+            `;
+
+        }
+
+
+        // ÁREA GOURMET
+
+        function mostrarGourmet() {
+
+            document.getElementById("informacoes").innerHTML = `
+
+                <h2>🍖 Área Gourmet</h2>
+
+                <p>
+                    <strong>Horários:</strong>
+                    10h às 14h / 19h às 23h
+                </p>
+
+                <h3>O que está incluso:</h3>
+
+                <ul>
+
+                    <li>Churrasqueira</li>
+
+                    <li>Bancada de preparo</li>
+
+                    <li>Pia</li>
+
+                    <li>8 mesas</li>
+
+                    <li>40 cadeiras</li>
+
+                    <li>40 talheres</li>
+
+                    <li>40 pratos</li>
+
+                    <li>1 geladeira</li>
+
+                    <li>1 freezer</li>
+
+                    <li>2 lixeiras</li>
+
+                    <li>Área coberta</li>
+
+                </ul>
+
+                <p>
+                    <strong>Capacidade:</strong>
+                    até 40 pessoas
+                </p>
+
+                <h3>Regras:</h3>
+
+                <ul>
+
+                    <li>Manter o local limpo após o uso.</li>
+
+                    <li>Não deixar alimentos ou bebidas no espaço.</li>
+
+                    <li>Não ultrapassar o horário da reserva.</li>
+
+                    <li>Respeitar o limite de pessoas permitido.</li>
+
+                    <li>Danos aos equipamentos serão de responsabilidade do responsável pela reserva.</li>
+
+                </ul>
+
+            `;
+
+        }
+
+
+        // QUADRA ESPORTIVA
+
+        function mostrarQuadra() {
+
+            document.getElementById("informacoes").innerHTML = `
+
+                <h2>⚽ Quadra Esportiva</h2>
+
+                <p>
+                    <strong>Aluguel:</strong>
+                    Apenas nos finais de semana
+                </p>
+
+                <p>
+                    <strong>Horários:</strong>
+                    7h às 12h / 13h às 18h
+                </p>
+
+                <h3>O que está incluso:</h3>
+
+                <ul>
+
+                    <li>Traves de futebol</li>
+
+                    <li>Cestas de basquete</li>
+
+                    <li>Rede para vôlei</li>
+
+                    <li>Iluminação</li>
+
+                    <li>Bancos para descanso</li>
+
+                    <li>2 vestiários/banheiros</li>
+
+                    <li>1 bebedouro</li>
+
+                </ul>
+
+                <p>
+                    <strong>Capacidade:</strong>
+                    até 30 pessoas por reserva
+                </p>
+
+                <h3>Regras:</h3>
+
+                <ul>
+
+                    <li>Utilizar a quadra somente durante o horário reservado.</li>
+
+                    <li>Não comer ou beber dentro da quadra.</li>
+
+                    <li>Manter o espaço limpo.</li>
+
+                    <li>Não exceder o número máximo de usuários.</li>
+
+                    <li>Comunicar qualquer dano à administração.</li>
+
+                </ul>
+
+            `;
+
+        }
+
+
+        // PISCINA
+
+        function mostrarPiscina() {
+
+            document.getElementById("informacoes").innerHTML = `
+
+                <h2>🏊 Espaço Piscina</h2>
+
+                <p>
+                    <strong>Aluguel:</strong>
+                    Apenas nos finais de semana
+                </p>
+
+                <p>
+                    <strong>Horários:</strong>
+                    10h às 14h / 15h às 19h
+                </p>
+
+                <h3>O que está incluso:</h3>
+
+                <ul>
+
+                    <li>Piscina adulto</li>
+
+                    <li>Piscina infantil</li>
+
+                    <li>8 espreguiçadeiras</li>
+
+                    <li>6 mesas</li>
+
+                    <li>24 cadeiras</li>
+
+                    <li>Duchas</li>
+
+                    <li>Iluminação</li>
+
+                    <li>2 banheiros</li>
+
+                </ul>
+
+                <p>
+                    <strong>Capacidade:</strong>
+                    até 30 pessoas
+                </p>
+
+                <h3>Regras:</h3>
+
+                <ul>
+
+                    <li>Não jogar nada inapropriado na piscina.</li>
+
+                    <li>Não correr ou empurrar outras pessoas.</li>
+
+                    <li>Crianças devem estar acompanhadas por um responsável.</li>
+
+                    <li>Não levar objetos de vidro para a área da piscina.</li>
+
+                    <li>Não consumir alimentos dentro da piscina.</li>
+
+                    <li>Respeitar o horário de funcionamento.</li>
+
+                    <li>Manter a área limpa.</li>
+
+                </ul>
+
+            `;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

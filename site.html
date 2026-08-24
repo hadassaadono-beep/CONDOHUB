@@ -1,0 +1,759 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CONDOHUB - Reservas</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color:rgb(227, 241, 224) ;
+            margin: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: rgb(193, 226, 142);
+            color: black;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 35px;
+        }
+
+        header p {
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .caixa {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #bbb;
+        }
+
+        .botoes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #1e8449;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #217dbb;
+        }
+
+        .botao-reserva {
+            width: 100%;
+            background-color: #1e8449;
+            margin-top: 10px;
+        }
+
+        .botao-reserva:hover {
+            background-color: #1e8449;
+        }
+
+        #informacoes {
+            line-height: 1.6;
+        }
+
+        #informacoes h2 {
+            color: #333;
+        }
+
+        #informacoes h3 {
+            color: #3498db;
+        }
+
+        li {
+            margin: 7px 0;
+        }
+
+        .formulario {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dffcbe;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        #resultado {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #eafaf1;
+            border: 2px solid #27ae60;
+            border-radius: 10px;
+        }
+
+        .contatos {
+            text-align: center;
+            background-color: rgb(193, 226, 142);
+            color: black;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <header>
+
+        <h1>𝙲𝙾𝙽𝙳𝙾𝙷𝚄𝙱</h1>
+
+        <p>
+            Sistema de reservas das áreas comuns
+        </p>
+
+    </header>
+
+
+    <div class="container">
+
+
+        <!-- ESPAÇOS -->
+
+        <div class="caixa">
+
+            <h2>🏢 Áreas disponíveis</h2>
+
+            <p>
+                Clique em um espaço para ver suas informações.
+            </p>
+
+            <div class="botoes">
+
+                <button onclick="mostrarSalao()">
+                    🎉 Salão de Festas
+                </button>
+
+                <button onclick="mostrarGourmet()">
+                    🍖 Área Gourmet
+                </button>
+
+                <button onclick="mostrarQuadra()">
+                    ⚽ Quadra Esportiva
+                </button>
+
+                <button onclick="mostrarPiscina()">
+                    🏊 Espaço Piscina
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMAÇÕES -->
+
+        <div class="caixa">
+
+            <div id="informacoes">
+
+                <h2>Informações do espaço</h2>
+
+                <p>
+                    Clique em um dos espaços acima.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESERVA -->
+
+        <div class="caixa">
+
+            <h2>📅 Fazer reserva</h2>
+
+            <form
+                class="formulario"
+                onsubmit="fazerReserva(event)"
+            >
+
+
+                <label for="nome">
+                    Nome:
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+
+
+                <label for="telefone">
+                    Telefone:
+                </label>
+
+                <input
+                    type="tel"
+                    id="telefone"
+                    placeholder="Digite seu telefone"
+                    required
+                >
+
+
+                <label for="espaco">
+                    Espaço:
+                </label>
+
+                <select
+                    id="espaco"
+                    onchange="atualizarHorarios()"
+                    required
+                >
+
+                    <option value="">
+                        Selecione um espaço
+                    </option>
+
+                    <option value="Salão de Festas">
+                        Salão de Festas
+                    </option>
+
+                    <option value="Área Gourmet">
+                        Área Gourmet
+                    </option>
+
+                    <option value="Quadra Esportiva">
+                        Quadra Esportiva
+                    </option>
+
+                    <option value="Espaço Piscina">
+                        Espaço Piscina
+                    </option>
+
+                </select>
+
+
+                <label for="data">
+                    Data da reserva:
+                </label>
+
+                <input
+                    type="date"
+                    id="data"
+                    required
+                >
+
+
+                <label for="horario">
+                    Horário:
+                </label>
+
+                <select
+                    id="horario"
+                    required
+                >
+
+                    <option value="">
+                        Escolha primeiro o espaço
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="botao-reserva"
+                >
+                    ✅ Fazer reserva
+                </button>
+
+            </form>
+
+
+            <!-- RESULTADO -->
+
+            <div id="resultado"></div>
+
+        </div>
+
+
+        <!-- CONTATOS -->
+
+        <div class="caixa contatos">
+
+            <h2>📞 Contatos</h2>
+
+            <p>Guilherme (00) 000000000</p>
+
+            <p>Luiza (00) 000000000</p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        // FUNÇÃO PARA MOSTRAR O SALÃO
+
+        function mostrarSalao() {
+
+            document.getElementById("informacoes").innerHTML = `
+
+                <h2>🎉 Salão de Festas</h2>
+
+                <p>
+                    <strong>Aluguel:</strong>
+                    Todos os dias - diária.
+                </p>
+
+                <h3>O que está incluso:</h3>
+
+                <ul>
+
+                    <li>30 mesas (5 lugares)</li>
+                    <li>150 cadeiras</li>
+                    <li>Cozinha de apoio</li>
+                    <li>150 talheres</li>
+                    <li>150 pratos (fundo)</li>
+                    <li>150 copos</li>
+                    <li>150 taças</li>
+                    <li>1 geladeira</li>
+                    <li>1 freezer</li>
+                    <li>Dois banheiros</li>
+                    <li>Sistema de som</li>
+
+                </ul>
+
+                <p>
+                    <strong>Capacidade:</strong>
+                    150 pessoas.
+                </p>
+
+                <h3>Regras:</h3>
+
+                <ul>
+
+                    <li>Respeitar o horário reservado.</li>
+                    <li>Manter o ambiente limpo e organizado.</li>
+                    <li>Não ultrapassar o limite de convidados.</li>
+                    <li>Evitar som em volume excessivo.</li>
+                    <li>Não danificar mesas, cadeiras ou equipamentos.</li>
+                    <li>O responsável pela reserva responderá pelo descumprimento das regras.</li>
+
+                </ul>
+
+            `;
+
+            document.getElementById("espaco").value =
+                "Salão de Festas";
+
+            atualizarHorarios();
+
+        }
+
+
+        // FUNÇÃO PARA MOSTRAR A ÁREA GOURMET
+
+        function mostrarGourmet() {
+
+            document.getElementById("informacoes").innerHTML = `
+
+                <h2>🍖 Área Gourmet</h2>
+
+                <p>
+                    <strong>Aluguel:</strong>
+                    Todos os dias.
+                </p>
+
+                <p>
+                    <strong>Horários:</strong>
+                    10h00-14h00 / 19h00-23h00
+                </p>
+
+                <h3>O que está incluso:</h3>
+
+                <ul>
+
+                    <li>Churrasqueira</li>
+                    <li>Bancada de preparo</li>
+                    <li>Pia</li>
+                    <li>8 mesas</li>
+                    <li>40 cadeiras</li>
+                    <li>40 talheres</li>
+                    <li>40 pratos</li>
+                    <li>1 geladeira</li>
+                    <li>1 freezer</li>
+                    <li>2 lixeiras</li>
+                    <li>Área coberta</li>
+
+                </ul>
+
+                <p>
+                    <strong>Capacidade:</strong>
+                    até 40 pessoas.
+                </p>
+
+                <h3>Regras:</h3>
+
+                <ul>
+
+                    <li>Manter o local limpo após o uso.</li>
+                    <li>Não deixar alimentos ou bebidas no espaço.</li>
+                    <li>Não ultrapassar o horário da reserva.</li>
+                    <li>Danos aos equipamentos são responsabilidade do responsável pela reserva.</li>
+                    <li>Respeitar o limite de pessoas permitido.</li>
+
+                </ul>
+
+            `;
+
+            document.getElementById("espaco").value =
+                "Área Gourmet";
+
+            atualizarHorarios();
+
+        }
+
+
+        // FUNÇÃO PARA MOSTRAR A QUADRA
+
+        function mostrarQuadra() {
+
+            document.getElementById("informacoes").innerHTML = `
+
+                <h2>⚽ Quadra Esportiva</h2>
+
+                <p>
+                    <strong>Aluguel:</strong>
+                    Apenas nos finais de semana.
+                </p>
+
+                <p>
+                    <strong>Horários:</strong>
+                    Matutino: 7h00-12h00
+                    <br>
+                    Vespertino: 13h00-18h00
+                </p>
+
+                <h3>O que está incluso:</h3>
+
+                <ul>
+
+                    <li>Traves de futebol</li>
+                    <li>Cestas de basquete</li>
+                    <li>Rede para vôlei</li>
+                    <li>Iluminação</li>
+                    <li>Bancos para descanso</li>
+                    <li>2 vestiários/banheiros</li>
+                    <li>1 bebedouro</li>
+
+                </ul>
+
+                <p>
+                    <strong>Capacidade:</strong>
+                    30 pessoas.
+                </p>
+
+                <h3>Regras:</h3>
+
+                <ul>
+
+                    <li>Utilizar a quadra somente durante o horário reservado.</li>
+                    <li>Não comer ou beber dentro da quadra.</li>
+                    <li>Manter o espaço limpo.</li>
+                    <li>Não exceder o número máximo de usuários.</li>
+                    <li>Comunicar qualquer dano à administração.</li>
+
+                </ul>
+
+            `;
+
+            document.getElementById("espaco").value =
+                "Quadra Esportiva";
+
+            atualizarHorarios();
+
+        }
+
+
+        // FUNÇÃO PARA MOSTRAR A PISCINA
+
+        function mostrarPiscina() {
+
+            document.getElementById("informacoes").innerHTML = `
+
+                <h2>🏊 Espaço Piscina</h2>
+
+                <p>
+                    <strong>Aluguel:</strong>
+                    Apenas nos finais de semana.
+                </p>
+
+                <p>
+                    <strong>Horários:</strong>
+                    10h00-14h00 / 15h00-19h00
+                </p>
+
+                <h3>O que está incluso:</h3>
+
+                <ul>
+
+                    <li>Piscina adulto</li>
+                    <li>Piscina infantil</li>
+                    <li>8 espreguiçadeiras</li>
+                    <li>6 mesas (4 lugares)</li>
+                    <li>24 cadeiras</li>
+                    <li>Duchas</li>
+                    <li>Iluminação</li>
+                    <li>2 banheiros</li>
+
+                </ul>
+
+                <p>
+                    <strong>Capacidade:</strong>
+                    30 pessoas.
+                </p>
+
+                <h3>Regras:</h3>
+
+                <ul>
+
+                    <li>Não jogar nada inapropriado na piscina.</li>
+                    <li>Não correr ou empurrar outras pessoas.</li>
+                    <li>Crianças devem estar acompanhadas por um responsável.</li>
+                    <li>Não levar objetos de vidro para a área da piscina.</li>
+                    <li>Não consumir alimentos dentro da piscina.</li>
+                    <li>Respeitar o horário de funcionamento.</li>
+                    <li>Manter a área limpa.</li>
+
+                </ul>
+
+            `;
+
+            document.getElementById("espaco").value =
+                "Espaço Piscina";
+
+            atualizarHorarios();
+
+        }
+
+
+        // ATUALIZAR OS HORÁRIOS
+
+        function atualizarHorarios() {
+
+            let espaco =
+                document.getElementById("espaco").value;
+
+            let horario =
+                document.getElementById("horario");
+
+            horario.innerHTML = "";
+
+
+            if (espaco === "Salão de Festas") {
+
+                horario.innerHTML = `
+                    <option value="Diária">
+                        Diária
+                    </option>
+                `;
+
+            }
+
+
+            else if (espaco === "Área Gourmet") {
+
+                horario.innerHTML = `
+                    <option value="10h00-14h00">
+                        10h00-14h00
+                    </option>
+
+                    <option value="19h00-23h00">
+                        19h00-23h00
+                    </option>
+                `;
+
+            }
+
+
+            else if (espaco === "Quadra Esportiva") {
+
+                horario.innerHTML = `
+                    <option value="7h00-12h00">
+                        Matutino - 7h00-12h00
+                    </option>
+
+                    <option value="13h00-18h00">
+                        Vespertino - 13h00-18h00
+                    </option>
+                `;
+
+            }
+
+
+            else if (espaco === "Espaço Piscina") {
+
+                horario.innerHTML = `
+                    <option value="10h00-14h00">
+                        10h00-14h00
+                    </option>
+
+                    <option value="15h00-19h00">
+                        15h00-19h00
+                    </option>
+                `;
+
+            }
+
+
+            else {
+
+                horario.innerHTML = `
+                    <option value="">
+                        Escolha primeiro o espaço
+                    </option>
+                `;
+
+            }
+
+        }
+
+
+        // FAZER A RESERVA
+
+        function fazerReserva(event) {
+
+            event.preventDefault();
+
+
+            let nome =
+                document.getElementById("nome").value;
+
+            let telefone =
+                document.getElementById("telefone").value;
+
+            let espaco =
+                document.getElementById("espaco").value;
+
+            let data =
+                document.getElementById("data").value;
+
+            let horario =
+                document.getElementById("horario").value;
+
+
+            if (
+                nome === "" ||
+                telefone === "" ||
+                espaco === "" ||
+                data === "" ||
+                horario === ""
+            ) {
+
+                alert("Preencha todos os campos!");
+
+                return;
+
+            }
+
+
+            let dataFormatada =
+                data.split("-").reverse().join("/");
+
+
+            let resultado =
+                document.getElementById("resultado");
+
+
+            resultado.style.display = "block";
+
+
+            resultado.innerHTML = `
+
+                <h2>✅ Reserva registrada!</h2>
+
+                <p>
+                    <strong>Nome:</strong>
+                    ${nome}
+                </p>
+
+                <p>
+                    <strong>Telefone:</strong>
+                    ${telefone}
+                </p>
+
+                <p>
+                    <strong>Espaço:</strong>
+                    ${espaco}
+                </p>
+
+                <p>
+                    <strong>Data:</strong>
+                    ${dataFormatada}
+                </p>
+
+                <p>
+                    <strong>Horário:</strong>
+                    ${horario}
+                </p>
+
+                <hr>
+
+                <p>
+                    Sua solicitação de reserva foi registrada
+                    no sistema.
+                </p>
+
+            `;
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

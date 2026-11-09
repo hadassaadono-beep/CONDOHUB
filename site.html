@@ -3,6 +3,7 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,89 +15,137 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color:rgb(227, 241, 224) ;
-            margin: 0;
-            color: #333;
-        }
+       body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: #333;
+
+    background-image:
+       
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdQXZ2_Yo6Ic82qMTJGuswIAMKRpsLcSiActSDmAuyVgtWSiIjxVwdjjk&s=10");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+       
 
         header {
-            background-color: rgb(193, 226, 142);
-            color: black;
+            background: #ffffff;
+            color: #222;
             text-align: center;
-            padding: 30px 20px;
+            padding: 28px 20px;
+            border-bottom: 1px solid #e7e7e7;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         header h1 {
-            margin: 0 0 8px;
-            font-size: 35px;
+            margin: 0 0 7px;
+            font-size: 34px;
+            letter-spacing: 2px;
+            font-weight: 800;
         }
 
         header p {
             margin: 0;
+            color: #777;
+            font-size: 14px;
         }
 
+       
         .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 30px auto;
+            width: 92%;
+            max-width: 1100px;
+            margin: 40px auto;
         }
+
 
         .caixa {
-            background-color: white;
-            padding: 25px;
+            background: #ffffff;
+            padding: 30px;
             margin-bottom: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px #bbb;
+            border-radius: 22px;
+            border: 1px solid #e8e8e8;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
 
+        .caixa h2 {
+            margin-top: 0;
+            color: #222;
+        }
+
+      
+
         .botoes {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 25px;
         }
 
         button {
-            padding: 14px 20px;
+            padding: 15px 18px;
             border: none;
-            border-radius: 8px;
-            background-color: #1e8449;
+            border-radius: 14px;
+            background: #0f0033;
             color: white;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
+            transition: 0.25s;
         }
 
         button:hover {
-            background-color: #217dbb;
+            background:#0f0033;
+            transform: translateY(-3px);
         }
 
-        .botao-reserva {
+       
+
+        .foto-espaco {
             width: 100%;
-            background-color: #1e8449;
-            margin-top: 10px;
+            height: 330px;
+            object-fit: cover;
+            display: block;
+            border-radius: 20px;
+            margin: 20px 0 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transition: 0.4s;
         }
 
-        .botao-reserva:hover {
-            background-color: #1e8449;
+        .foto-espaco:hover {
+            transform: scale(1.015);
         }
+
+       
 
         #informacoes {
             line-height: 1.6;
         }
 
         #informacoes h2 {
-            color: #333;
+            color: #222;
+            font-size: 27px;
+            margin-bottom: 10px;
         }
 
         #informacoes h3 {
-            color: #3498db;
+            color: #0f0033;
+            margin-top:25px;
         }
 
-        li {
+        #informacoes ul {
+            padding-left: 25px;
+        }
+
+        #informacoes li {
             margin: 7px 0;
         }
+
+        
 
         .formulario {
             display: flex;
@@ -112,25 +161,102 @@
         input,
         select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #dffcbe;
-            border-radius: 7px;
+            padding: 14px;
+            border: 1px solid #dedede;
+            border-radius: 12px;
             font-size: 15px;
+            background: #fafafa;
+            outline: none;
+            transition: 0.2s;
         }
+
+        input:focus,
+        select:focus {
+            border-color:#0f0033;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(30, 132, 73, 0.10);
+        }
+
+        .botao-reserva {
+            width: 100%;
+            background: #0f0033;
+            margin-top: 10px;
+            padding: 17px;
+            font-size: 16px;
+        }
+
+        .botao-reserva:hover {
+            background: #0f0033;
+        }
+
 
         #resultado {
             display: none;
             margin-top: 25px;
-            padding: 20px;
-            background-color: #eafaf1;
-            border: 2px solid #27ae60;
-            border-radius: 10px;
+            padding: 25px;
+            background: #f0faf3;
+            border: 1px solid #9bd1ac;
+            border-left: 5px solid #1e8449;
+            border-radius: 15px;
         }
-
+        #resultado h2 {
+            color:#0f0033;
+        }
         .contatos {
             text-align: center;
-            background-color: rgb(193, 226, 142);
-            color: black;
+            background: #0f0033;
+            color: #ffffff;
+            border: none;
+        }
+
+        .contatos h2 {
+            color: white;
+        }
+
+        .contatos p {
+            color: #cfcfcf;
+        }
+        @media (max-width: 850px) {
+
+            .botoes {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 22px 15px;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                width: 94%;
+                margin: 25px auto;
+            }
+
+            .caixa {
+                padding: 20px;
+                border-radius: 17px;
+            }
+
+            .botoes {
+                grid-template-columns: 1fr;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .foto-espaco {
+                height: 230px;
+                border-radius: 16px;
+            }
+
         }
 
     </style>
@@ -138,7 +264,6 @@
 </head>
 
 <body>
-
 
     <header>
 
@@ -150,15 +275,11 @@
 
     </header>
 
-
     <div class="container">
-
-
-        <!-- ESPAÇOS -->
 
         <div class="caixa">
 
-            <h2>🏢 Áreas disponíveis</h2>
+            <h2>Áreas disponíveis</h2>
 
             <p>
                 Clique em um espaço para ver suas informações.
@@ -167,19 +288,19 @@
             <div class="botoes">
 
                 <button onclick="mostrarSalao()">
-                    🎉 Salão de Festas
+                    Salão de Festas
                 </button>
 
                 <button onclick="mostrarGourmet()">
-                    🍖 Área Gourmet
+                    Área Gourmet
                 </button>
 
                 <button onclick="mostrarQuadra()">
-                    ⚽ Quadra Esportiva
+                    Quadra Esportiva
                 </button>
 
                 <button onclick="mostrarPiscina()">
-                    🏊 Espaço Piscina
+                    Espaço Piscina
                 </button>
 
             </div>
@@ -187,7 +308,7 @@
         </div>
 
 
-        <!-- INFORMAÇÕES; teste arthur  -->
+        <!-- INFORMAÇÕES -->
 
         <div class="caixa">
 
@@ -208,13 +329,12 @@
 
         <div class="caixa">
 
-            <h2>📅 Fazer reserva</h2>
+            <h2>Fazer reserva</h2>
 
             <form
                 class="formulario"
                 onsubmit="fazerReserva(event)"
             >
-
 
                 <label for="nome">
                     Nome:
@@ -223,7 +343,7 @@
                 <input
                     type="text"
                     id="nome"
-                    placeholder="Digite seu nome"
+                    placeholder="Digite seu nome completo"
                     required
                 >
 
@@ -304,7 +424,7 @@
                     type="submit"
                     class="botao-reserva"
                 >
-                    ✅ Fazer reserva
+                     Fazer reserva
                 </button>
 
             </form>
@@ -321,7 +441,7 @@
 
         <div class="caixa contatos">
 
-            <h2>📞 Contatos</h2>
+            <h2>Contatos</h2>
 
             <p>Guilherme (00) 000000000</p>
 
@@ -341,7 +461,13 @@
 
             document.getElementById("informacoes").innerHTML = `
 
-                <h2>🎉 Salão de Festas</h2>
+                <h2>Salão de Festas</h2>
+
+                <img
+                    src="https://blog.vitoriahoteis.com.br/wp-content/uploads/2024/11/WhatsApp-Image-2025-03-10-at-09.18.29_8_11zon-scaled.webp"
+                    alt="Salão de Festas"
+                    class="foto-espaco"
+                >
 
                 <p>
                     <strong>Aluguel:</strong>
@@ -400,7 +526,14 @@
 
             document.getElementById("informacoes").innerHTML = `
 
-                <h2>🍖 Área Gourmet</h2>
+                <h2>Área Gourmet</h2>
+
+                 <img
+                 
+                    src="https://blog.agmar.com.br/wp-content/uploads/2019/12/g_plugdados-galeria-edificio-yora-cabecalho_shape3-2-1024x384.jpeg"
+                    alt="Área Gourmet"
+                    class="foto-espaco"
+                >
 
                 <p>
                     <strong>Aluguel:</strong>
@@ -445,8 +578,10 @@
                     <li>Danos aos equipamentos são responsabilidade do responsável pela reserva.</li>
                     <li>Respeitar o limite de pessoas permitido.</li>
 
-                </ul>
+                   
 
+                </ul>
+                
             `;
 
             document.getElementById("espaco").value =
@@ -463,7 +598,12 @@
 
             document.getElementById("informacoes").innerHTML = `
 
-                <h2>⚽ Quadra Esportiva</h2>
+                <h2>Quadra Esportiva</h2>
+
+                <img
+                    src="https://i0.wp.com/catagua.com.br/wp-content/uploads/2023/09/quadra-recreativa-no-condominio-veja-6-vantagens.jpg"
+                    alt="quadra esportiva"
+                    class="foto-espaco"
 
                 <p>
                     <strong>Aluguel:</strong>
@@ -524,7 +664,12 @@
 
             document.getElementById("informacoes").innerHTML = `
 
-                <h2>🏊 Espaço Piscina</h2>
+                <h2>Espaço Piscina</h2>
+
+                <img
+                    src="https://www.hotelacademy.com.br/wp-content/uploads/2026/07/pacotes-de-ferias-para-hotel-.webp"
+                    alt="Salão de Festas"
+                    class="foto-espaco"
 
                 <p>
                     <strong>Aluguel:</strong>
@@ -713,7 +858,7 @@
 
             resultado.innerHTML = `
 
-                <h2>✅ Reserva registrada!</h2>
+                <h2> Reserva registrada!</h2>
 
                 <p>
                     <strong>Nome:</strong>
@@ -750,7 +895,6 @@
             `;
 
         }
-
 
     </script>
 

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -10,27 +9,26 @@
     <title>CONDOHUB - Reservas</title>
 
     <style>
-
         * {
             box-sizing: border-box;
         }
 
-       body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    color: #333;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #333;
 
-    background-image:
-       
-        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdQXZ2_Yo6Ic82qMTJGuswIAMKRpsLcSiActSDmAuyVgtWSiIjxVwdjjk&s=10");
+            background-image:
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
+                url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdQXZ2_Yo6Ic82qMTJGuswIAMKRpsLcSiActSDmAuyVgtWSiIjxVwdjjk&s=10");
 
-       
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+
 
         header {
             background: #ffffff;
@@ -56,7 +54,7 @@
             font-size: 14px;
         }
 
-       
+
         .container {
             width: 92%;
             max-width: 1100px;
@@ -78,7 +76,7 @@
             color: #222;
         }
 
-      
+
 
         .botoes {
             display: grid;
@@ -99,11 +97,11 @@
         }
 
         button:hover {
-            background:#0f0033;
+            background: #0f0033;
             transform: translateY(-3px);
         }
 
-       
+
 
         .foto-espaco {
             width: 100%;
@@ -120,7 +118,7 @@
             transform: scale(1.015);
         }
 
-       
+
 
         #informacoes {
             line-height: 1.6;
@@ -134,7 +132,7 @@
 
         #informacoes h3 {
             color: #0f0033;
-            margin-top:25px;
+            margin-top: 25px;
         }
 
         #informacoes ul {
@@ -145,7 +143,7 @@
             margin: 7px 0;
         }
 
-        
+
 
         .formulario {
             display: flex;
@@ -172,7 +170,7 @@
 
         input:focus,
         select:focus {
-            border-color:#0f0033;
+            border-color: #0f0033;
             background: white;
             box-shadow: 0 0 0 3px rgba(30, 132, 73, 0.10);
         }
@@ -199,9 +197,11 @@
             border-left: 5px solid #1e8449;
             border-radius: 15px;
         }
+
         #resultado h2 {
-            color:#0f0033;
+            color: #0f0033;
         }
+
         .contatos {
             text-align: center;
             background: #0f0033;
@@ -216,6 +216,7 @@
         .contatos p {
             color: #cfcfcf;
         }
+
         @media (max-width: 850px) {
 
             .botoes {
@@ -258,7 +259,6 @@
             }
 
         }
-
     </style>
 
 </head>
@@ -331,44 +331,48 @@
 
             <h2>Fazer reserva</h2>
 
-            <form
-                class="formulario"
-                onsubmit="fazerReserva(event)"
-            >
+            <form class="formulario" onsubmit="fazerReserva(event)">
 
                 <label for="nome">
                     Nome:
                 </label>
 
-                <input
-                    type="text"
-                    id="nome"
-                    placeholder="Digite seu nome completo"
-                    required
-                >
+                <input type="text" id="nome" placeholder="Digite seu nome completo" required>
 
 
                 <label for="telefone">
                     Telefone:
                 </label>
 
-                <input
-                    type="tel"
-                    id="telefone"
-                    placeholder="Digite seu telefone"
-                    required
-                >
+                <input type="tel" name="telefone" id="telefone" placeholder="Digite seu telefone" maxlength="15"
+                    oninput="formatarTelefone(this)" required>
+
+                <!-- // FORMATAR TELEFONE AUTOMATICAMENTE -->
+                <script>
+                    function formatarTelefone(input) {
+                        let numero = input.value.replace(/\D/g, '').slice(0, 11);
+
+
+                        if (numero.length >= 3) {
+                            numero = '(' + numero.slice(0, 2) + ') ' + numero.slice(2);
+                        }
+
+
+                        if (numero.length >= 10) {
+                            numero = numero.slice(0, 10) + '-' + numero.slice(10);
+                        }
+
+
+                        input.value = numero;
+                    }
+                </script>
 
 
                 <label for="espaco">
                     Espaço:
                 </label>
 
-                <select
-                    id="espaco"
-                    onchange="atualizarHorarios()"
-                    required
-                >
+                <select id="espaco" onchange="atualizarHorarios()" required>
 
                     <option value="">
                         Selecione um espaço
@@ -397,21 +401,24 @@
                     Data da reserva:
                 </label>
 
-                <input
-                    type="date"
-                    id="data"
-                    required
-                >
+                <input type="date" id="data" required>
+                <script>
+                    let data = new Date();
 
+                    let ano = data.getFullYear();
+                    let mes = String(data.getMonth() + 1).padStart(2, '0');
+                    let dia = String(data.getDate()).padStart(2, '0');
+
+                    let dataAtual = ano + "-" + mes + "-" + dia;
+
+                    document.getElementById("data").min = dataAtual;
+                </script>
 
                 <label for="horario">
                     Horário:
                 </label>
 
-                <select
-                    id="horario"
-                    required
-                >
+                <select id="horario" required>
 
                     <option value="">
                         Escolha primeiro o espaço
@@ -420,11 +427,8 @@
                 </select>
 
 
-                <button
-                    type="submit"
-                    class="botao-reserva"
-                >
-                     Fazer reserva
+                <button type="submit" class="botao-reserva">
+                    Fazer reserva
                 </button>
 
             </form>
